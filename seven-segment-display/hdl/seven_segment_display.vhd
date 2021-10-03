@@ -5,25 +5,23 @@
 
 entity seven_segment_display is
   generic(
-    g_digit_width       : integer := 4;
-    g_displ_active_high : boolean := true;
-    g_displ_data_width  : integer := 7
+    g_displ_active_high : boolean := true
   );
   port(
     -- Clock
-    i_clock     : in  std_logic;
-    i_reset     : in  std_logic;
-    -- 
-    i_digit     : in  std_logic_vector(g_digit_width-1 downto 0);
-    i_digit_va  : in  std_logic;
-    -- 8 Segment
-    o_segment_disp  : out std_logic_vector(g_displ_data_width-1 downto 0)
+    i_clock         : in  std_logic;
+    i_reset         : in  std_logic;
+    -- Input 
+    i_digit         : in  std_logic_vector(3 downto 0);
+    i_digit_va      : in  std_logic;
+    -- Output
+    o_segment_disp  : out std_logic_vector(6 downto 0)
   );
 end seven_segment_display;
 
 architecture rtl of seven_segment_display is
 
-  signal r_segment_disp : std_logic_vector(g_displ_data_width-1 downto 0);
+  signal r_segment_disp : std_logic_vector(6 downto 0);
 
 begin
 
